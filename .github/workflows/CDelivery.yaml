@@ -51,7 +51,7 @@ jobs:
         if: ${{env.enable_sonar == 'true'}}
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          SONAR_TOKEN: 79c6c19e4990e4998f674c2b93d2d8467fefaffd
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
           SONAR_HOST_URL: sonarcloud.io
         with:
