@@ -3,7 +3,7 @@ env:
   app_version:     "master"
   repo_region:     "us-central1"
   project_id:      "${{ secrets.PROJECT_ID }}"
-  app_name:        "wordpress"
+  app_name:        "project-team3"
   tag_new_version: "${GITHUB_SHA}"
   
 
