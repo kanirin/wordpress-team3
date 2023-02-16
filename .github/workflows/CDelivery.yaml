@@ -8,7 +8,7 @@ env:
   
 
   # Sonar stuff, please update accordingly
-  enable_sonar:    "false"
+  enable_sonar:    "true"
   # sonar_organization: "terraform-project-89"
   # sonar_projectKey: "terraform-project-89"
   # sonar_login:  "{{ secrets.sonar_login }}"
@@ -47,45 +47,23 @@ jobs:
         run: |
           git clone ${{ env.repo }}  
 
-      # - name: SonarCloud Scan
-        # if: ${{env.enable_sonar == 'true'}}
-        # uses: SonarSource/sonarcloud-github-action@master
-        # env:
-          # SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          # SONAR_HOST_URL: sonarcloud.io
-        # with:
-          # projectBaseDir: .
-          # args: >
-            # -Dsonar.organization=terraform-project-89
-            # -Dsonar.projectKey=terraform-project-89
-            # -Dsonar.sources=. \
-        # 
-      # - name: SonarQube Scan
-        # uses: kitabisa/sonarqube-action@v1.2.0
-        # with:
-          # host: https://sonarcloud.io
-          # login: ${{ secrets.SONARQUBE_TOKEN }}                                      
-                  # 
+      - name: SonarCloud Scan
+        if: ${{env.enable_sonar == 'true'}}
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: 79c6c19e4990e4998f674c2b93d2d8467fefaffd
 
-# 
-
-
-      # Runs a set of commands using the runners shell
-      # - name: Remove Old Images
-        # working-directory: ${{ env.app_name }}
-        # run: |
-          # echo "hello"
-          # docker image prune -af
-
-
-      # - name: Pre-build Image
-      #   working-directory: ${{ env.app_name }}
-      #   run: |
-      #     # rm -rf static/ autogen/
-      #     make 
-
-
-
+          SONAR_HOST_URL: sonarcloud.io
+        with:
+          projectBaseDir: .
+          args: >
+            -Dsonar.organization=terraform-project-89
+            -Dsonar.projectKey=terraform-project-89_terraform-project-89
+            -Dsonar.sources=./
+    
+      
+       
+        
       # Runs a set of commands using the runners shell
       - name: Build Image
         working-directory: ${{ env.app_name}}
