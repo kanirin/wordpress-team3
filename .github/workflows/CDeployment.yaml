@@ -45,7 +45,7 @@ jobs:
       #     bash setenv.sh
 
       - name: Initialize
-        working-directory: "wordpress"
+        working-directory: "terraform-helm-local"
         run: |
           terraform init 
 
@@ -69,7 +69,7 @@ jobs:
             
       # Runs a set of commands using the runners shell
       - name: Deploy Application
-        working-directory: "wordpress"
+        working-directory: "terraform-helm-local"
         run: |
             terraform apply      \
             -var repository="${{ env.repository }}"     \
