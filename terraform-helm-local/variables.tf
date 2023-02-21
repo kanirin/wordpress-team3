@@ -5,7 +5,7 @@ variable "deployment_name" {
 
 variable "deployment_namespace" {
   type        = string
-  default     = "default"
+  default     = "team-3"
   description = ""
 }
 
