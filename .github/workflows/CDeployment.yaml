@@ -37,20 +37,20 @@ jobs:
 
       - name: Check Out Helm Repo
         run: |
-          helm repo add "${{ env.helm_repository }}"
+          git clone "${{ env.helm_repository }}"
 
-      # - name: Configure Backend
-      #   working-directory: "wordpress"
-      #   run: |
-      #     bash setenv.sh
+      - name: Configure Backend
+        working-directory: "custom_helm_chart"
+        run: |
+          bash setenv.sh
 
       - name: Initialize
-        working-directory: "terraform-helm-local"
+        working-directory: "custom_helm_chart"
         run: |
           terraform init 
 
       - name: Create workspace
-        working-directory: "wordpress"
+        working-directory: "custom_helm_chart"
         run: |
           terraform workspace create dev && terraform workspace  select  dev   ||  terraform workspace  new  dev
 
@@ -59,9 +59,14 @@ jobs:
         with:
           credentials_json: '${{ secrets.SERVICE_ACCOUNT }}'
 
-      - name: Authenticate to repository
-        run: |
-          gcloud auth configure-docker  ${{ env.region }}-docker.pkg.dev
+#       - name: Authenticate to repository
+#         run: |
+#           gcloud auth configure-docker  ${{ env.region }}-docker.pkg.dev
+      - id: 'get-credentials'
+        uses: 'google-github-actions/get-gke-credentials@v1'
+        with:
+          cluster_name: 'project-cluster'
+          location: 'us-central1'
 
       # The KUBECONFIG env var is automatically exported and picked up by kubectl.
       - id: 'kubeconfig'
