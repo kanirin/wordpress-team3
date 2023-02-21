@@ -67,11 +67,9 @@ jobs:
         with:
           credentials_json: '${{ secrets.SERVICE_ACCOUNT }}'
 
-      - id: 'get-credentials'
-        uses: 'google-github-actions/get-gke-credentials@v1'
-        with:
-          cluster_name: 'project-cluster'
-          location: 'us-central1'
+      - name: Authenticate to repository
+        run: |
+          gcloud auth configure-docker  ${{ env.repo_region }}-docker.pkg.dev
 
       # The KUBECONFIG env var is automatically exported and picked up by kubectl.
       - id: 'kubeconfig'
