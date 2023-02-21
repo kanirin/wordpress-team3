@@ -47,10 +47,10 @@ jobs:
         run: |
           git clone "${{ env.helm_repository }}"
 
-      - name: Configure Backend
-        working-directory: "wordpress"
-        run: |
-          bash setenv.sh
+      # - name: Configure Backend
+      #   working-directory: "wordpress"
+      #   run: |
+      #     bash setenv.sh
 
       - name: Initialize
         working-directory: "wordpress"
