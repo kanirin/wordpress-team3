@@ -49,10 +49,10 @@ jobs:
         run: |
           terraform init 
 
-      - name: Create workspace
-        working-directory: "wordpress"
-        run: |
-          terraform workspace  select  dev   ||  terraform workspace  new  dev
+      # - name: Create workspace
+      #   working-directory: "wordpress"
+      #   run: |
+      #     terraform workspace create dev && terraform workspace  select  dev   ||  terraform workspace  new  dev
 
       - id: 'auth-to-k8s'
         uses: 'google-github-actions/auth@v1'
