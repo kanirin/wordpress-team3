@@ -78,7 +78,7 @@ jobs:
             
       # Runs a set of commands using the runners shell
       - name: Deploy Application
-        working-directory: "application"
+        working-directory: "custom_helm_chart"
         run: |
           terraform apply    \
           -var repository="${{ env.repository }}"     \
