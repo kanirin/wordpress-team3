@@ -7,19 +7,25 @@
 
 ## Usage
 
+### Step 1.
+Run following command to initiate backend.tf file
 ```
-module "wordpress" {
-  source             = "../modules/monitoring"
-  google_domain_name = var.google_domain_name
-  PROJECT_ID         = var.PROJECT_ID
-  service_name       = "wordpress"
-}
+source ../scripts/setenv.sh
 ```
-google_domain_name (required) - The domain name used to access the WordPress service. This is used to set up an uptime check for the service.
 
-PROJECT_ID (required) - The ID of the Google Cloud project to set up monitoring for.
+### Step 2.
+Run following command to initiate terraform
+```
+terraform init
+```
 
-service_name (optional, default = "default") - The name of the service to set up monitoring for.
+### Step 3.
+Run following command to deploy uptime check in GCP for wordpress application
+```
+terraform apply
+```
+
+
 
 ## Inputs
 google_domain_name - The domain name used to access the WordPress service. This is used to set up an uptime check for the service.
