@@ -11,15 +11,12 @@ env:
   environment:        "dev"
   
 name: ContinuousDeployment 
+
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "master" ]
-# on:
-#   workflow_run:
-#     workflows: ["ContinuousDelivery"]
-#     types:
-#       - completed
+  workflow_run:
+    workflows: ["ContinuousDelivery"]
+    types:
+      - completed
 
 # A workflow run is made up of one or more jobs tat can run sequentially or in parallel
 jobs:
