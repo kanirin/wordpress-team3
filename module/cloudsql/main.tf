@@ -40,7 +40,7 @@ resource "google_sql_user" "users" {
 }
 
 
-# added my folder code after this location_preference
+# added my folder code after this line
 
 resource "google_sql_database_instance" "main" {
 name = "wordpress"
