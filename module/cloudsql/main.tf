@@ -38,3 +38,28 @@ resource "google_sql_user" "users" {
   host     = var.db_host
   password = var.db_password
 }
+
+
+# added my folder code after this location_preference
+
+resource "google_sql_database_instance" "main" {
+name = "wordpress"
+database_version = "MYSQL_5_7"
+deletion_protection = "false"
+region = "us-central1"
+settings {
+# Second-generation instance tiers are based on the machine
+# type. See argument reference below.
+tier = "db-f1-micro"
+}
+}
+resource "google_sql_user" "users" {
+name = "diana"
+instance = google_sql_database_instance.main.name
+host = "104.198.76.154"
+password = "Pass5678"
+}
+resource "google_sql_database" "database" {
+name = "wordpress1"
+instance = google_sql_database_instance.main.name
+}

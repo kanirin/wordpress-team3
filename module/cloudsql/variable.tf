@@ -52,3 +52,12 @@ variable "db_name" {
   default     = "my_dbname"
   description = "description"
 }
+
+
+# in this folder only top code block was changed
+
+variable "project_name" {
+  type        = string
+  default     = "terraform-project-diana" #that yellow part 
+  description = "enter your project name"
+}
