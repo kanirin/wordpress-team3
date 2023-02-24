@@ -66,12 +66,21 @@ resource "google_sql_database_instance" "main" {
 }
 
 }
+resource "random_password" "password" {
+  length           = 16
+  special          = true
+  override_special = "!#$%&*()-_=+[]{}<>:?"
+}
+
+
+
 resource "google_sql_user" "users" {
   name     = "diana"
   instance = google_sql_database_instance.main.name
   host     = "%"
-  password = "Pass5678"
+  password = random_password.password.result
 }
+
 resource "google_sql_database" "database" {
   name     = "wordpress1"
   instance = google_sql_database_instance.main.name

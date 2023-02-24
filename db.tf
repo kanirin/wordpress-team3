@@ -1,11 +1,35 @@
 module "wordpress_db" {
+
   source = "./module/cloudsql"
-  # db_name         = "wordpress1"
-  # dbinstance_name = "wordpress"
-  # db_username     = "diana"
-  # db_password     = "Pass5678"
-  # db_host         = "application.rindevops.com"
+
 }
-output URL {
-  value   = module.wordpress_db.google_sql_database_instance
+resource "kubernetes_config_map" "example" {
+  metadata {
+    namespace = "team-3"
+    name      = "db-config"
+  }
+
+  data = {
+    ip       = module.wordpress_db.ip
+    username = module.wordpress_db.username
+    password = module.wordpress_db.password
+    db_name  = module.wordpress_db.db_name
+
+  }
+
+}
+output "ip" {
+  value = module.wordpress_db.ip
+}
+output "username" {
+  value = module.wordpress_db.username
+}
+
+output "password" {
+  value     = module.wordpress_db.password
+  sensitive = true
+}
+
+output "db_name" {
+  value = module.wordpress_db.db_name
 }
