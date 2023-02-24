@@ -10,6 +10,11 @@ variable "region" {
   default     = "us-central1"
   description = "add desired region"
 }
+variable "google_domain_name" {
+  type        = string
+  default     = "rindevops.com"
+  description = "Please use your domain"
+}
 
 
 variable "zone" {
