@@ -54,15 +54,15 @@ resource "google_sql_database_instance" "main" {
   
 
 
-  ip_configuration {
-      ipv4_enabled = "true"
+#   ip_configuration {
+#       ipv4_enabled = "true"
 
-      authorized_networks {
-        value           = "0.0.0.0/0"
-        name            =  "diana"
+#       authorized_networks {
+#         value           = "0.0.0.0/0"
+#         name            =  "diana"
 
-      }
-}
+#       }
+# }
 }
 
 }
@@ -77,7 +77,7 @@ resource "random_password" "password" {
 resource "google_sql_user" "users" {
   name     = "diana"
   instance = google_sql_database_instance.main.name
-  host     = "main.${var.google_domain_name}"
+  host     = "%"
   password = random_password.password.result
 }
 
