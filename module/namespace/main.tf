@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "example" {
     name        = var.name
   }
 }
- 
+
 
 
 # resource "kubernetes_resource_quota" "secrets" {

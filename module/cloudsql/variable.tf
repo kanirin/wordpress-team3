@@ -1,20 +1,20 @@
 variable "project_name" {
   type        = string
-  default     = "YourProjectID" #that yellow part 
+  default     = "terraform-project-kani95" #that yellow part 
   description = "enter your project name"
 }
 
 
 variable "region" {
   type        = string
-  default     = "us-south1"
+  default     = "us-central1"
   description = "add desired region"
 }
 
 
 variable "zone" {
   type        = string
-  default     = "us-south1-a"
+  default     = "us-central1"
   description = "zone where to deploy resource"
 }
 
@@ -44,7 +44,7 @@ variable "db_host" {
   type        = string
   default     = "%"
   description = "description"
-  
+
 }
 
 variable "db_name" {
@@ -56,8 +56,8 @@ variable "db_name" {
 
 # in this folder only top code block was changed
 
-variable "project_name" {
-  type        = string
-  default     = "terraform-project-diana" #that yellow part 
-  description = "enter your project name"
-}
+# variable "project_name" {
+#   type        = string
+#   default     = "terraform-project-kani95" #that yellow part 
+#   description = "enter your project name"
+# }

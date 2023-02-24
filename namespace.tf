@@ -1,3 +1,3 @@
-module team-namespace {
-    source  = "./module/namespace"
+module "team-namespace" {
+  source = "./module/namespace"
 }
