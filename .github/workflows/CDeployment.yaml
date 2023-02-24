@@ -6,7 +6,7 @@ env:
   project_id:         "${{ secrets.PROJECT_ID }}"
   repository:         "us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/project-team3/wordpress"
   cluster_name:       "project-cluster"
-  helm_repository:    "https://github.com/farrukh90/custom_helm_chart.git"
+  helm_repository:    "https://github.com/kanirin/wordpress-team3.git"
   google_domain_name: "${{ secrets.GOOGLE_DOMAIN_NAME }}"
   environment:        "dev"
   
@@ -41,17 +41,17 @@ jobs:
           git clone "${{ env.helm_repository }}"
 
       - name: Configure Backend
-        working-directory: "custom_helm_chart"
+        working-directory: "wordpress-team3"
         run: |
           bash setenv.sh
 
       - name: Initialize
-        working-directory: "custom_helm_chart"
+        working-directory: "wordpress-team3"
         run: |
           terraform init 
 
       - name: Create workspace
-        working-directory: "custom_helm_chart"
+        working-directory: "wordpress-team3"
         run: |
           terraform workspace create dev && terraform workspace  select  dev   ||  terraform workspace  new  dev
 
@@ -75,7 +75,7 @@ jobs:
             
       # Runs a set of commands using the runners shel
       - name: Deploy Application
-        working-directory: "custom_helm_chart"
+        working-directory: "wordpress-team3"
         run: |
           terraform apply    \
           -var repository="${{ env.repository }}"     \
@@ -87,3 +87,7 @@ jobs:
           -var project_id="${{ secrets.PROJECT_ID }}" \
           -var environment="${{ env.environment }}" \
           --auto-approve
+          
+          
+          
+          # ddd
