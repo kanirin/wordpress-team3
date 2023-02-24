@@ -12,11 +12,16 @@ env:
   
 name: ContinuousDeployment 
 
+# on:
+  # workflow_run:
+    # workflows: ["ContinuousDelivery"]
+    # types:
+      # - completed
 on:
-  workflow_run:
-    workflows: ["ContinuousDelivery"]
-    types:
-      - completed
+    #  Triggers the workflow o
+  push:
+    branches: [ "master" ]
+
 
 # A workflow run is made up of one or more jobs tat can run sequentially or in parallel
 jobs:
