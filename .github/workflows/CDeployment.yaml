@@ -1,14 +1,14 @@
 env:
   region:             "us-central1"
   app_name:           "wordpress"
-  app_version:        ${GITHUB_SHA} 
+  app_version:        "latest" 
   app_port:            "80"
   project_id:         "${{ secrets.PROJECT_ID }}"
   repository:         "us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/project-team3/wordpress"
   cluster_name:       "project-cluster"
   helm_repository:    "https://github.com/kanirin/wordpress-team3.git"
   google_domain_name: "${{ secrets.GOOGLE_DOMAIN_NAME }}"
-  environment:        "dev"
+ 
   
 name: ContinuousDeployment 
 
