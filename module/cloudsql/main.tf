@@ -54,15 +54,15 @@ resource "google_sql_database_instance" "main" {
   
 
 
-  ip_configuration {
-      ipv4_enabled = "true"
+#   ip_configuration {
+#       ipv4_enabled = "true"
 
-      authorized_networks {
-        value           = "0.0.0.0/0"
-        name            =  "diana"
+#       authorized_networks {
+#         value           = "0.0.0.0/0"
+#         name            =  "diana"
 
-      }
-}
+#       }
+# }
 }
 
 }
